@@ -1,23 +1,53 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import index from '../components/index.vue'
+import login from '../components/login.vue'
+import register from '../components/register.vue'
+import header from '../components/module/header.vue'
+import basicInfo from '../components/basicInfo.vue'
+import companyInfo from '../components/companyInfo.vue'
+import developmentSituation from '../components/developmentSituation.vue'
+import creditRisks from '../components/creditRisks.vue'
+import businessRisks from '../components/businessRisks.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/index',
+    name: 'index',
+    component: index
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/login',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/basicInfo',
+    name: 'basicInfo',
+    component: basicInfo
+  },
+  {
+    path: '/companyInfo',
+    name: 'companyInfo',
+    component: companyInfo
+  },
+  {
+    path: '/developmentSituation',
+    name: 'developmentSituation',
+    component: developmentSituation
+  },
+  {
+    path: '/creditRisks',
+    name: 'creditRisks',
+    component: creditRisks
+  },
+  {
+    path: '/businessRisks',
+    name: 'businessRisks',
+    component: businessRisks
+  },
 ]
 
 const router = new VueRouter({
