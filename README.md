@@ -1,19 +1,11 @@
 # financial-platform
 
-## Project setup
+## 1.进入到项目根目录，安装项目
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+npm install
 ```
 
-### Compiles and minifies for production
+### 2.编译，并启动项目
 ```
-yarn build
+npm run serve
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
