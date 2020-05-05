@@ -37,6 +37,11 @@
                 </el-col>
             </div>
             <el-main class="graph-container">
+                <!-- <div class="companyName-wrapper">
+                    <div class="companyName">
+                        企业发展概况
+                    </div>
+                </div>  -->
                 <div id="relationshipGraph" style="width: 100%;height:100%;" class="relational-wrapper">
                 </div>
             </el-main>
@@ -149,10 +154,11 @@ export default {
                         symbolSize: 60, //节点大小
                         focusNodeAdjacency: true,//当鼠标移动到节点上，突出显示节点以及节点的边和邻接节点
                         roam: 'scale', //允许缩放
+                        legendHoverLink : true,//是否启用图例 hover(悬停) 时的联动高亮。
                         categories: [{
                             itemStyle: {
                                 normal: {
-                                    color: "#4169E1",
+                                    color: "#0000CD",
                                 }
                             }
                         }, {
@@ -191,9 +197,8 @@ export default {
                             }
                         },
                         data: [{
-                            name: '发展状况\n\n'+returndata.value,
+                            name: '发展状况',
                             category: 0,
-                            value:returndata.value
                         }, {
                             name: '行业状况\n\n'+returndata.children[0].value,
                             category: 1,
@@ -211,7 +216,7 @@ export default {
                             category: 1,
                             value:returndata.children[3].value
                         }, {
-                            name: '员工福利\n\n'+returndata.children[0].children[0].value,
+                            name: '参保种类\n\n'+returndata.children[0].children[0].value,
                             category: 2,
                             value:returndata.children[0].children[0].value,
                         },{
@@ -360,15 +365,25 @@ export default {
 .el-menu-vertical-demo{
     height: 100%;
 }
-.graph-container{
-    display: flex;
-    // flex-wrap: nowrap;
-}
 .radar-wrapper{
     margin-top: 20px;
 }
 .main-wrapper{
     display: flex;
     flex-wrap: nowrap;
+}
+.companyName-wrapper{
+    margin: 10px 30px;
+    width: auto;
+    height: 50px;
+    border: solid 1px #e6e6e6;
+    border-radius: 5px;
+    padding-left: 10px;
+    background-color: #F0FFFF;
+}
+.companyName{
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 50px;
 }
 </style>

@@ -46,21 +46,26 @@
                     <div id="radarGraph"  style="width: 450px;height:450px;" class="radar-wrapper">
                     </div>
                     <div class="radarGraph-explain">
-                        <el-table
-                            :data="tableData"
-                            stripe
-                            style="width: 100%">
-                            <el-table-column
-                                prop="label"
-                                width="180"
-                                align="center">
-                            </el-table-column>
-                            <el-table-column
-                                prop="classes"
-                                width="180"
-                                align="center">
-                            </el-table-column>
-                        </el-table>
+                        <div class="explain-table">
+                            <el-table
+                                :data="tableData"
+                                stripe
+                                style="width: 100%">
+                                <el-table-column
+                                    prop="label"
+                                    width="180"
+                                    align="center">
+                                </el-table-column>
+                                <el-table-column
+                                    prop="classes"
+                                    width="180"
+                                    align="center">
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                        <div v-html="explainText" class="explain-text">
+                            
+                        </div>
                     </div>
                 </div>
             </el-main>
@@ -90,13 +95,14 @@ export default {
             value:[],
             classes:[],
             entname:'',
-            tableData: []
+            tableData: [],
+            explainText:"说明：<br/>各个标签的6个等级分别为A+、A-、B+、B-、C+、C-。<br/>对于企业行业状况、创新能力、活跃程度、稳定性4个正面标签而言，等级A+至C-表示企业该标签的良好状况依次递减，处于A+的企业情况最好、C-的最差；<br/>对于经营风险和信用风险两个负面性标签而言，等级A+至C-表示企业该指标对应的风险性依次递减，处于A+等级的企业风险性最高，C-对应的风险性最低。"
         }
     },
     methods:{
         async getBasicInfo(entname){
             console.log('entname2',entname)
-            const {data:res} =await this.$axios.get('get_total_classes',{params:{'entname':entname}})
+            const {data:res} =await this.$axios.get('get_total',{params:{'entname':entname}})
             console.log('基本信息等级',res)
             var classes=res.value
             console.log('classes',classes)
@@ -170,7 +176,7 @@ export default {
         },
         async raderEcharts(entname){
             console.log('entname2',entname)
-            const {data:res} =await this.$axios.get('get_total',{params:{'entname':entname}})
+            const {data:res} =await this.$axios.get('get_total_classes',{params:{'entname':entname}})
             console.log('基本信息',res.value)
             var value=res.value;
             // var value_test=[5000, 1400, 2800, 3100, 4200, 2100]
@@ -230,205 +236,6 @@ export default {
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
         },
-        // relationshipEcharts(){
-        //     var relationshipEchart=this.$echarts.init(document.getElementById('relationshipGraph'));
-        //     var option={
-        //         title: {
-        //         text: ''
-        //         },
-        //         tooltip: {},
-        //         animationDurationUpdate: 1500,
-        //         animationEasingUpdate: 'quinticInOut',
-        //         label: {
-        //             normal: {
-        //                 show: true,
-        //                 textStyle: {
-        //                     fontSize: 12
-        //                 },
-        //             }
-        //         },
-        //         legend: {
-        //             x: "center",
-        //             show: false,
-        //             data: ["夫妻", "战友", '亲戚']
-        //         },
-        //         series: [
-
-        //             {
-        //                 type: 'graph',
-        //                 layout: 'force',
-        //                 symbolSize: 45,
-        //                 focusNodeAdjacency: true,
-        //                 roam: true,
-        //                 categories: [{
-        //                     name: '夫妻',
-        //                     itemStyle: {
-        //                         normal: {
-        //                             color: "#009800",
-        //                         }
-        //                     }
-        //                 }, {
-        //                     name: '战友',
-        //                     itemStyle: {
-        //                         normal: {
-        //                             color: "#4592FF",
-        //                         }
-        //                     }
-        //                 }, {
-        //                     name: '亲戚',
-        //                     itemStyle: {
-        //                         normal: {
-        //                             color: "#3592F",
-        //                         }
-        //                     }
-        //                 }],
-        //                 label: {
-        //                     normal: {
-        //                         show: true,
-        //                         textStyle: {
-        //                             fontSize: 12
-        //                         },
-        //                     }
-        //                 },
-        //                 force: {
-        //                     repulsion: 1000
-        //                 },
-        //                 edgeSymbolSize: [4, 50],
-        //                 edgeLabel: {
-        //                     normal: {
-        //                         show: true,
-        //                         textStyle: {
-        //                             fontSize: 10
-        //                         },
-        //                         formatter: "{c}"
-        //                     }
-        //                 },
-        //                 data: [{
-        //                     name: '徐贱云',
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '冯可梁',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '邓志荣',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '李荣庆',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '郑志勇',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '赵英杰',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '王承军',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '陈卫东',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '邹劲松',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '赵成',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '陈现忠',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '陶泳',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }, {
-        //                     name: '王德福',
-        //                     category: 1,
-        //                     draggable: true,
-        //                 }],
-        //                 links: [{
-        //                     source: 0,
-        //                     target: 1,
-        //                     category: 0,
-        //                     value: '夫妻'
-        //                 }, {
-        //                     source: 0,
-        //                     target: 2,
-        //                     value: '子女'
-        //                 }, {
-        //                     source: 0,
-        //                     target: 3,
-        //                     value: '夫妻'
-        //                 }, {
-        //                     source: 0,
-        //                     target: 4,
-        //                     value: '父母'
-        //                 }, {
-        //                     source: 1,
-        //                     target: 2,
-        //                     value: '表亲'
-        //                 }, {
-        //                     source: 0,
-        //                     target: 5,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 4,
-        //                     target: 5,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 2,
-        //                     target: 8,
-        //                     value: '叔叔'
-        //                 }, {
-        //                     source: 0,
-        //                     target: 12,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 6,
-        //                     target: 11,
-        //                     value: '爱人'
-        //                 }, {
-        //                     source: 6,
-        //                     target: 3,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 7,
-        //                     target: 5,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 9,
-        //                     target: 10,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 3,
-        //                     target: 10,
-        //                     value: '朋友'
-        //                 }, {
-        //                     source: 2,
-        //                     target: 11,
-        //                     value: '同学'
-        //                 }],
-        //                 lineStyle: {
-        //                     normal: {
-        //                         opacity: 0.9,
-        //                         width: 1,
-        //                         curveness: 0
-        //                     }
-        //                 }
-        //             }
-        //         ]
-        //     };
-        //     relationshipEchart.setOption(option)
-        // },
     }
 }
 </script>
@@ -479,6 +286,7 @@ export default {
     border: solid 1px #e6e6e6;
     border-radius: 5px;
     padding-left: 10px;
+    background-color: #F0FFFF;
 }
 .companyName{
     font-size: 22px;
@@ -498,7 +306,17 @@ export default {
     flex-wrap: nowrap;
 }
 .radarGraph-explain{
-    margin-left: 180px;
-    margin-top: 100px;
+    margin-left: 120px;
+    // margin-top: 10px;
+    width: 480px;
+}
+.explain-table{
+    width: 360px;
+}
+.explain-text{
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: "Microsoft YaHei";
 }
 </style>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../components/index.vue'
-import login from '../components/login.vue'
+// import login from '../components/login.vue'
 import register from '../components/register.vue'
 import header from '../components/module/header.vue'
 import basicInfo from '../components/basicInfo.vue'
@@ -14,15 +14,15 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/index',
+    path: '/',
     name: 'index',
     component: index
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
-  },
+  // {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: login
+  // },
   {
     path: '/basicInfo',
     name: 'basicInfo',
