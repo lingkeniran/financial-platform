@@ -200,7 +200,7 @@ export default {
                             name: '发展状况',
                             category: 0,
                         }, {
-                            name: '行业状况\n\n'+returndata.children[0].value,
+                            name: '员工福利\n\n'+returndata.children[0].value,
                             category: 1,
                             value:returndata.children[0].value
                         }, {

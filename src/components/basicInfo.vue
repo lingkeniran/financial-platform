@@ -110,7 +110,7 @@ export default {
                     label: '活跃程度',
                     classes: classes[0],
                 }, {
-                    label: '行业状况',
+                    label: '员工福利',
                     classes: classes[1],
                 }, {
                     label: '稳定程度',
@@ -306,9 +306,9 @@ export default {
     flex-wrap: nowrap;
 }
 .radarGraph-explain{
-    margin-left: 120px;
+    margin-left: 110px;
     // margin-top: 10px;
-    width: 480px;
+    width: 500px;
 }
 .explain-table{
     width: 360px;
