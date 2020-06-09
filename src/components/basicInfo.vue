@@ -109,19 +109,19 @@ export default {
             this.tableData=[{
                     label: '活跃程度',
                     classes: classes[0],
-                }, {
-                    label: '员工福利',
-                    classes: classes[1],
-                }, {
+                },  {
+                    label: '创新能力',
+                    classes: classes[4],
+                },{
                     label: '稳定程度',
                     classes: classes[2],
+                },{
+                    label: '行业状况',
+                    classes: classes[1],
                 }, {
                     label: '信用风险',
                     classes: classes[3],
-                }, {
-                    label: '创新能力',
-                    classes: classes[4],
-                }, {
+                },  {
                     label: '经营风险',
                     classes: classes[5],
                 }]
@@ -204,11 +204,11 @@ export default {
                     },
                     indicator: [
                         { name: '活跃程度', max: 6000},
-                        { name: '经营风险', max: 6000},
                         { name: '创新能力', max: 6000},
-                        { name: '信用风险', max: 6000},
                         { name: '稳定程度', max: 6000},
-                        { name: '员工福利', max: 6000}
+                        { name: '行业状况', max: 6000},
+                        { name: '经营风险', max: 6000},
+                        { name: '信用风险', max: 6000},
                     ]
                 },
                 series: [{

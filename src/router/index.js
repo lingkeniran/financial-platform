@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../components/index.vue'
-// import login from '../components/login.vue'
-import register from '../components/register.vue'
-import header from '../components/module/header.vue'
 import basicInfo from '../components/basicInfo.vue'
 import companyInfo from '../components/companyInfo.vue'
 import developmentSituation from '../components/developmentSituation.vue'
@@ -16,13 +13,8 @@ Vue.use(VueRouter)
   {
     path: '/index',
     name: 'index',
-    component: index
+    component: index,
   },
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: login
-  // },
   {
     path: '/basicInfo',
     name: 'basicInfo',
